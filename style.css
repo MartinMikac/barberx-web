@@ -1,0 +1,108 @@
+:root {
+    --primary-color: #00ffcc; /* Neonově zelená/tyrkysová */
+    --bg-color: #0a0a0a;
+    --text-color: #ffffff;
+    --card-bg: #161616;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Header & Logo */
+header {
+    padding: 2rem;
+}
+
+.logo {
+    font-weight: 900;
+    font-size: 2rem;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+    padding: 4rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 3.5rem;
+    line-height: 1;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+}
+
+h1 span {
+    color: var(--primary-color);
+    text-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
+}
+
+.cta-button {
+    background-color: var(--primary-color);
+    color: black;
+    padding: 1.2rem 2.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    margin-top: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+}
+
+/* Services */
+.services {
+    padding: 4rem 1rem;
+    background-color: var(--card-bg);
+    margin: 2rem 0;
+}
+
+.service-item {
+    display: flex;
+    justify-content: space-between;
+    max-width: 500px;
+    margin: 1rem auto;
+    padding: 1rem;
+    border-bottom: 1px solid #333;
+}
+
+/* Instagram Section */
+.ig-placeholder {
+    padding: 3rem;
+    border: 2px dashed #333;
+    max-width: 500px;
+    margin: 2rem auto;
+    border-radius: 20px;
+}
+
+.ig-placeholder a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+footer {
+    padding: 2rem;
+    font-size: 0.8rem;
+    color: #666;
+}

@@ -164,6 +164,42 @@
         }, { threshold: 0.1 });
         revealElements.forEach(el => observer.observe(el));
 
+        // Instagram deep link handler (fixes Android not opening profile)
+        function openInstagram(e) {
+            e.preventDefault();
+            const username = 'lukyx_barber25';
+            const webUrl = 'https://www.instagram.com/' + username + '/';
+            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+            if (isMobile) {
+                // On Android/iOS, try the app deep link first
+                const appUrl = 'instagram://user?username=' + username;
+                let didNavigate = false;
+
+                // Listen for page hide (means app opened successfully)
+                window.addEventListener('pagehide', function handler() {
+                    didNavigate = true;
+                    window.removeEventListener('pagehide', handler);
+                });
+
+                window.location.href = appUrl;
+
+                // Fallback: if app didn't open within 1.5s, go to web
+                setTimeout(function() {
+                    if (!didNavigate && !document.hidden) {
+                        window.location.href = webUrl;
+                    }
+                }, 1500);
+            } else {
+                window.open(webUrl, '_blank');
+            }
+        }
+
+        // Attach handler to all Instagram links
+        document.querySelectorAll('a[href*="instagram.com"]').forEach(function(link) {
+            link.addEventListener('click', openInstagram);
+        });
+
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {

@@ -180,27 +180,16 @@
             e.preventDefault();
             const username = 'lukyx_barber25';
             const webUrl = 'https://www.instagram.com/' + username + '/';
-            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+            const isAndroid = /Android/i.test(navigator.userAgent);
+            const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-            if (isMobile) {
-                // On Android/iOS, try the app deep link first
-                const appUrl = 'instagram://user?username=' + username;
-                let didNavigate = false;
-
-                // Listen for page hide (means app opened successfully)
-                window.addEventListener('pagehide', function handler() {
-                    didNavigate = true;
-                    window.removeEventListener('pagehide', handler);
-                });
-
-                window.location.href = appUrl;
-
-                // Fallback: if app didn't open within 1.5s, go to web
-                setTimeout(function() {
-                    if (!didNavigate && !document.hidden) {
-                        window.location.href = webUrl;
-                    }
-                }, 1500);
+            if (isAndroid) {
+                // Android Intent URL — most reliable way to open a profile in IG app
+                // Falls back to web automatically if app is not installed
+                window.location.href = 'intent://www.instagram.com/' + username + '/#Intent;package=com.instagram.android;scheme=https;end';
+            } else if (isIOS) {
+                // iOS universal link — Instagram handles these natively
+                window.location.href = webUrl;
             } else {
                 window.open(webUrl, '_blank');
             }

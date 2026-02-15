@@ -32,7 +32,7 @@
             <div class="nav-links">
                 <a href="#pricing">Ceník</a>
                 <a href="#work">Práce</a>
-                <a href="https://www.instagram.com/lukyx_barber25/" class="nav-cta" target="_blank">
+                <a href="https://www.instagram.com/_u/lukyx_barber25" class="nav-cta" target="_blank">
                     <i class="fab fa-instagram"></i> Rezervace
                 </a>
             </div>
@@ -53,7 +53,7 @@
                 <p class="hero-desc reveal">Dělám ty nejvíc fresh střihy a fades v okolí.<br>Sleduj trendy, nebuď basic.</p>
                 
                 <div class="action-buttons reveal">
-                    <a href="https://www.instagram.com/lukyx_barber25/" class="cta-button" target="_blank">
+                    <a href="https://www.instagram.com/_u/lukyx_barber25" class="cta-button" target="_blank">
                         <span class="cta-bg"></span>
                         <i class="fab fa-instagram"></i> BOOK NOW
                     </a>
@@ -103,7 +103,7 @@
                         <li><i class="fas fa-check"></i> Fade dle přání</li>
                         <li><i class="fas fa-check"></i> Finální styling</li>
                     </ul>
-                    <a href="https://www.instagram.com/lukyx_barber25/" class="price-cta" target="_blank">Rezervovat</a>
+                    <a href="https://www.instagram.com/_u/lukyx_barber25" class="price-cta" target="_blank">Rezervovat</a>
                 </div>
                 <div class="price-card featured reveal">
                     <div class="featured-badge">POPULAR</div>
@@ -122,7 +122,7 @@
                         <li><i class="fas fa-check"></i> Premium styling</li>
                         <li><i class="fas fa-check"></i> Poradenství</li>
                     </ul>
-                    <a href="https://www.instagram.com/lukyx_barber25/" class="price-cta" target="_blank">Rezervovat</a>
+                    <a href="https://www.instagram.com/_u/lukyx_barber25" class="price-cta" target="_blank">Rezervovat</a>
                 </div>
             </div>
         </section>
@@ -141,7 +141,7 @@
                     </div>
                     <h3>@lukyx_barber25</h3>
                     <p>Sleduj mě pro nejnovější střihy, transformace a behind the scenes.</p>
-                    <a href="https://www.instagram.com/lukyx_barber25/" target="_blank" class="ig-follow-btn">
+                    <a href="https://www.instagram.com/_u/lukyx_barber25" target="_blank" class="ig-follow-btn">
                         <i class="fab fa-instagram"></i> Sledovat na Instagramu
                     </a>
                 </div>
@@ -154,7 +154,7 @@
             <div class="footer-logo">BARBER<span>X</span></div>
             <p>Pro rezervace piš do zpráv na Instagramu.</p>
             <div class="footer-links">
-                <a href="https://www.instagram.com/lukyx_barber25/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.instagram.com/_u/lukyx_barber25" target="_blank"><i class="fab fa-instagram"></i></a>
             </div>
             <p class="small">© 2026 BarberX.cz | Lukáš X.</p>
         </div>
@@ -174,31 +174,6 @@
             });
         }, { threshold: 0.1 });
         revealElements.forEach(el => observer.observe(el));
-
-        // Instagram deep link handler (fixes Android not opening profile)
-        function openInstagram(e) {
-            e.preventDefault();
-            const username = 'lukyx_barber25';
-            const webUrl = 'https://www.instagram.com/' + username + '/';
-            const isAndroid = /Android/i.test(navigator.userAgent);
-            const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-            if (isAndroid) {
-                // Android Intent URL — most reliable way to open a profile in IG app
-                // Falls back to web automatically if app is not installed
-                window.location.href = 'intent://www.instagram.com/' + username + '/#Intent;package=com.instagram.android;scheme=https;end';
-            } else if (isIOS) {
-                // iOS universal link — Instagram handles these natively
-                window.location.href = webUrl;
-            } else {
-                window.open(webUrl, '_blank');
-            }
-        }
-
-        // Attach handler to all Instagram links
-        document.querySelectorAll('a[href*="instagram.com"]').forEach(function(link) {
-            link.addEventListener('click', openInstagram);
-        });
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
